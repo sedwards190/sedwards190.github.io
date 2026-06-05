@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Edwards — Biomedical Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0f7560;
+    --teal-light: #d0ede7;
+    --teal-mid: #3aaa8c;
+    --coral: #c9462a;
+    --coral-light: #f5e8e4;
+    --ink: #0e1a14;
+    --ink-mid: #2d4438;
+    --muted: #7a9488;
+    --cream: #f5f2ec;
+    --cream-dark: #ede8df;
+    --white: #ffffff;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Instrument Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245,242,236,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+    display: block;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    max-width: 38ch;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .btn-primary:hover { background: var(--teal); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  /* === CELL ILLUSTRATION === */
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .cell-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  /* === SCROLL INDICATOR === */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* === SECTIONS === */
+  section { padding: 7rem 5rem; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--teal-mid);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  /* === ABOUT === */
+  #about { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .about-left {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .portrait-ring {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    border: 3px solid var(--teal-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portrait-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .portrait-ring::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px dashed var(--teal-mid);
+    animation: rotateDash 20s linear infinite;
+  }
+
+  @keyframes rotateDash {
+    to { transform: rotate(360deg); }
+  }
+
+  .about-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .about-links a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .about-links a:hover { color: var(--teal); }
+
+  .about-links svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .about-right p {
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    margin-bottom: 1.5rem;
+    max-width: 58ch;
+  }
+
+  .about-right p strong { color: var(--ink); font-weight: 600; }
+
+  .interest-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2px;
+    border: 1px solid var(--teal-mid);
+    color: var(--teal);
+    background: var(--teal-light);
+    letter-spacing: 0.04em;
+  }
+
+  /* === TIMELINE === */
+  #experience { background: var(--cream); }
+
+  .timeline {
+    position: relative;
+    margin-top: 3rem;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.5rem; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+  }
+
+  .tl-item {
+    position: relative;
+    padding-left: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -0.38rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--teal-mid);
+  }
+
+  .tl-item.current::before {
+    background: var(--teal);
+    border-color: var(--teal);
+    box-shadow: 0 0 0 4px var(--teal-light);
+  }
+
+  .tl-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-role {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-org {
+    font-size: 0.9rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .tl-desc {
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    max-width: 56ch;
+    line-height: 1.7;
+  }
+
+  /* === PROJECTS === */
+  #projects { background: var(--ink); }
+
+  #projects .section-label { color: var(--teal-mid); }
+  #projects h2 { color: var(--cream); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .project-card {
+    background: var(--ink-mid);
+    border: 1px solid rgba(58,170,140,0.2);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--teal-mid);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(58,170,140,0.5);
+    transform: translateY(-4px);
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-type {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--teal-mid);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: #8aaa9d;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    background: rgba(58,170,140,0.12);
+    color: var(--teal-mid);
+    border: 1px solid rgba(58,170,140,0.25);
+  }
+
+  .project-link {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--teal-mid);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover { gap: 0.7rem; }
+
+  /* === PUBLICATIONS === */
+  #publications { background: var(--cream-dark); }
+
+  .pub-list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pub-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 1.75rem;
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 3px;
+    transition: border-color 0.2s;
+  }
+
+  .pub-item:hover { border-color: var(--teal-mid); }
+
+  .pub-year {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--teal-light);
+    line-height: 1;
+    text-align: center;
+    border-right: 1px solid var(--cream-dark);
+    padding-right: 2rem;
+    padding-top: 0.25rem;
+  }
+
+  .pub-kind {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+
+  .pub-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .pub-venue {
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  /* === CONTACT === */
+  #contact {
+    background: var(--teal);
+    padding: 7rem 5rem;
+  }
+
+  #contact .section-label { color: var(--teal-light); }
+  #contact h2 { color: var(--white); font-size: clamp(2.5rem, 4vw, 3.5rem); }
+
+  .contact-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    margin: 1rem 0 2.5rem;
+    max-width: 48ch;
+  }
+
+  .contact-email {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .contact-email:hover { border-color: var(--white); }
+
+  .social-row {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 3px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .social-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.7);
+  }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--ink);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-made {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #445a50;
+    letter-spacing: 0.06em;
+  }
+
+  /* === ANIMATIONS === */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 8rem 2rem 4rem; }
+    .hero-right { height: 340px; }
+    section { padding: 5rem 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-left { position: static; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+    #contact { padding: 5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Samuel Edwards</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Presentations</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="cv.pdf" target="_blank">CV ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding: 0;">
+  <div class="hero-left">
+    <p class="hero-tag">Biomedical Scientist &amp; Cancer Researcher</p>
+    <h1>Decoding the<br><em>language</em><br>of cancer.</h1>
+    <p class="hero-desc">
+      BSc Biomedical Science, University of Sheffield.<br>
+      MSc Cancer, UCL — incoming 2025.<br>
+      Interested in cancer genomics, RNA biology, and computational approaches to oncology.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View my work</a>
+      <a href="cv.pdf" class="btn btn-outline" target="_blank">Download CV</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <svg class="cell-canvas" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cellGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3aaa8c" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#3aaa8c" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <ellipse cx="300" cy="350" rx="260" ry="280" fill="url(#cellGlow)"/>
+
+      <!-- Large cancer cell outer membrane -->
+      <ellipse cx="290" cy="360" rx="170" ry="155" fill="none" stroke="#3aaa8c" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.5"/>
+      <ellipse cx="290" cy="360" rx="166" ry="151" fill="#d0ede7" opacity="0.35"/>
+
+      <!-- Nucleus -->
+      <ellipse cx="285" cy="350" rx="68" ry="60" fill="#0f7560" opacity="0.18"/>
+      <ellipse cx="285" cy="350" rx="66" ry="58" fill="none" stroke="#0f7560" stroke-width="1.2"/>
+      <!-- DNA strands -->
+      <path d="M268 330 Q278 340 268 350 Q258 360 268 370" fill="none" stroke="#0f7560" stroke-width="1.2" opacity="0.7"/>
+      <path d="M302 330 Q292 340 302 350 Q312 360 302 370" fill="none" stroke="#0f7560" stroke-width="1.2" opacity="0.7"/>
+      <line x1="268" y1="334" x2="302" y2="334" stroke="#0f7560" stroke-width="0.8" opacity="0.5"/>
+      <line x1="263" y1="342" x2="297" y2="342" stroke="#0f7560" stroke-width="0.8" opacity="0.5"/>
+      <line x1="265" y1="350" x2="299" y2="350" stroke="#0f7560" stroke-width="0.8" opacity="0.5"/>
+      <line x1="263" y1="358" x2="297" y2="358" stroke="#0f7560" stroke-width="0.8" opacity="0.5"/>
+      <line x1="268" y1="366" x2="302" y2="366" stroke="#0f7560" stroke-width="0.8" opacity="0.5"/>
+      <!-- Nucleolus -->
+      <ellipse cx="295" cy="345" rx="14" ry="12" fill="#0f7560" opacity="0.4"/>
+
+      <!-- Mitochondria -->
+      <ellipse cx="200" cy="310" rx="22" ry="10" fill="none" stroke="#3aaa8c" stroke-width="1" transform="rotate(-20,200,310)"/>
+      <path d="M185 302 Q200 308 215 302" fill="none" stroke="#3aaa8c" stroke-width="0.8" transform="rotate(-20,200,310)" opacity="0.6"/>
+      <ellipse cx="370" cy="400" rx="24" ry="10" fill="none" stroke="#3aaa8c" stroke-width="1" transform="rotate(15,370,400)"/>
+      <path d="M354 392 Q370 398 386 392" fill="none" stroke="#3aaa8c" stroke-width="0.8" transform="rotate(15,370,400)" opacity="0.6"/>
+      <ellipse cx="230" cy="430" rx="18" ry="8" fill="none" stroke="#3aaa8c" stroke-width="1" transform="rotate(30,230,430)"/>
+
+      <!-- Ribosomes -->
+      <circle cx="340" cy="310" r="3.5" fill="#3aaa8c" opacity="0.5"/>
+      <circle cx="355" cy="325" r="3" fill="#3aaa8c" opacity="0.4"/>
+      <circle cx="220" cy="390" r="3.5" fill="#3aaa8c" opacity="0.5"/>
+      <circle cx="240" cy="375" r="2.5" fill="#3aaa8c" opacity="0.4"/>
+      <circle cx="335" cy="415" r="3" fill="#3aaa8c" opacity="0.45"/>
+
+      <!-- Filopodia -->
+      <path d="M290 210 Q295 175 288 145" fill="none" stroke="#3aaa8c" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="288" cy="142" r="4" fill="#3aaa8c" opacity="0.5"/>
+      <path d="M420 290 Q455 275 475 250" fill="none" stroke="#3aaa8c" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="477" cy="248" r="4" fill="#3aaa8c" opacity="0.5"/>
+      <path d="M160 380 Q120 365 100 340" fill="none" stroke="#3aaa8c" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="98" cy="338" r="4" fill="#3aaa8c" opacity="0.5"/>
+      <path d="M310 510 Q320 545 340 570" fill="none" stroke="#3aaa8c" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="342" cy="572" r="4" fill="#3aaa8c" opacity="0.5"/>
+      <path d="M180 270 Q155 238 140 210" fill="none" stroke="#3aaa8c" stroke-width="1" opacity="0.5"/>
+      <circle cx="138" cy="208" r="3.5" fill="#3aaa8c" opacity="0.45"/>
+
+      <!-- Satellite cell -->
+      <ellipse cx="490" cy="180" rx="52" ry="46" fill="#d0ede7" opacity="0.25"/>
+      <ellipse cx="490" cy="180" rx="52" ry="46" fill="none" stroke="#3aaa8c" stroke-width="1" stroke-dasharray="6 4" opacity="0.35"/>
+      <ellipse cx="490" cy="180" rx="20" ry="17" fill="none" stroke="#0f7560" stroke-width="1" opacity="0.5"/>
+      <ellipse cx="495" cy="178" rx="6" ry="5" fill="#0f7560" opacity="0.3"/>
+
+      <!-- Dividing cell -->
+      <ellipse cx="100" cy="550" rx="42" ry="38" fill="#d0ede7" opacity="0.2"/>
+      <ellipse cx="100" cy="550" rx="42" ry="38" fill="none" stroke="#3aaa8c" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
+      <line x1="100" y1="512" x2="100" y2="588" stroke="#3aaa8c" stroke-width="1" opacity="0.4"/>
+      <ellipse cx="100" cy="540" rx="15" ry="14" fill="none" stroke="#0f7560" stroke-width="0.9" opacity="0.45"/>
+      <ellipse cx="100" cy="560" rx="15" ry="14" fill="none" stroke="#0f7560" stroke-width="0.9" opacity="0.45"/>
+
+      <!-- Vesicles -->
+      <circle cx="460" cy="460" r="9" fill="none" stroke="#3aaa8c" stroke-width="0.9" opacity="0.4"/>
+      <circle cx="520" cy="390" r="6" fill="none" stroke="#3aaa8c" stroke-width="0.9" opacity="0.35"/>
+      <circle cx="70" cy="430" r="7" fill="none" stroke="#3aaa8c" stroke-width="0.9" opacity="0.35"/>
+      <circle cx="130" cy="190" r="5" fill="none" stroke="#3aaa8c" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="540" cy="530" r="8" fill="none" stroke="#3aaa8c" stroke-width="0.8" opacity="0.3"/>
+
+      <!-- Labels -->
+      <line x1="355" y1="330" x2="395" y2="300" stroke="#0f7560" stroke-width="0.8" opacity="0.5"/>
+      <text x="400" y="296" font-family="'DM Mono', monospace" font-size="10" fill="#0f7560" opacity="0.75">Nucleus</text>
+      <line x1="380" y1="480" x2="415" y2="495" stroke="#3aaa8c" stroke-width="0.8" opacity="0.5"/>
+      <text x="418" y="499" font-family="'DM Mono', monospace" font-size="10" fill="#3aaa8c" opacity="0.7">Plasma membrane</text>
+    </svg>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About me</p>
+
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="portrait-ring">
+        <!-- To add your photo, replace the emoji below with:
+             <img src="photo.jpg" alt="Sam Edwards"> -->
+        🔬
+      </div>
+      <p class="about-name">Samuel Edwards</p>
+      <p class="about-title">BSc Biomed, Sheffield · MSc Cancer, UCL</p>
+      <div class="about-links">
+        <a href="mailto:sedwardsbio@gmail.com">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          sedwardsbio@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/sedwards" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/sedwards" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="about-right fade-up">
+      <h2>Building a career at the<br><em>intersection of RNA<br>biology and cancer.</em></h2>
+
+      <p style="margin-top:1.5rem;">
+        I'm Sam — a <strong>Biomedical Science graduate from the University of Sheffield</strong> with a particular interest in the molecular underpinnings of cancer. My undergraduate dissertation explored mathematical modelling of ceRNA (competing endogenous RNA) networks, combining systems biology, dynamical modelling, and RNA biology to understand how non-coding RNAs regulate gene expression in disease.
+      </p>
+
+      <p>
+        This autumn I begin my <strong>MSc in Cancer at University College London</strong>, where I'll deepen my expertise in cancer biology and develop the research skills to tackle open questions in the field. My long-term goal is to pursue a PhD and contribute to research that translates into better outcomes for patients.
+      </p>
+
+      <p>
+        I'm particularly drawn to the intersection of computational and experimental approaches — whether that's building models of RNA regulatory networks or using bioinformatics to find patterns in genomic data.
+      </p>
+
+      <div class="interest-chips">
+        <span class="chip">RNA Biology</span>
+        <span class="chip">ceRNA Networks</span>
+        <span class="chip">Cancer Genomics</span>
+        <span class="chip">Systems Biology</span>
+        <span class="chip">Bioinformatics</span>
+        <span class="chip">Mathematical Modelling</span>
+        <span class="chip">Tumour Biology</span>
+        <span class="chip">Python · R · MATLAB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Education &amp; experience</p>
+  <h2>Where I've been.</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item current fade-up">
+      <p class="tl-date">2025 — Present</p>
+      <p class="tl-role">MSc Cancer</p>
+      <p class="tl-org">University College London (UCL)</p>
+      <p class="tl-desc">Postgraduate programme in cancer biology at one of the UK's leading research universities. Developing expertise in tumour biology, cancer genetics, and translational oncology research.</p>
+    </div>
+
+    <div class="tl-item fade-up">
+      <p class="tl-date">2021 — 2024</p>
+      <p class="tl-role">BSc Biomedical Science (Hons)</p>
+      <p class="tl-org">University of Sheffield</p>
+      <p class="tl-desc">Dissertation: "Mathematical Modelling of ceRNA Networks" — exploring how competing endogenous RNAs regulate gene expression through miRNA sponging, using systems of ordinary differential equations and bifurcation analysis.</p>
+    </div>
+
+    <div class="tl-item fade-up">
+      <p class="tl-date">Add your placement</p>
+      <p class="tl-role">Lab / Clinical Placement</p>
+      <p class="tl-org">Organisation Name</p>
+      <p class="tl-desc">Description of your placement — what you did, what you learned, what techniques you used.</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <a href="cv.pdf" class="btn btn-outline" target="_blank">Download full CV ↗</a>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <h2>What I've built &amp; researched.</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-up">
+      <p class="project-type">Undergraduate Dissertation</p>
+      <p class="project-title">Mathematical Modelling of ceRNA Networks</p>
+      <p class="project-desc">
+        Developed ODE-based models to investigate how competing endogenous RNAs regulate miRNA activity and downstream gene expression. Explored bistability and network topology as drivers of dysregulation in cancer.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Systems Biology</span>
+        <span class="project-tag">ODE Modelling</span>
+        <span class="project-tag">RNA Biology</span>
+        <span class="project-tag">MATLAB / Python</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <p class="project-type">Coding Project — coming soon</p>
+      <p class="project-title">Add your data or coding project here</p>
+      <p class="project-desc">
+        Describe a tool, analysis, or script you've built. Even a well-documented piece of data analysis from a module or placement counts — if it shows technical skill, show it off.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">R</span>
+      </div>
+      <a href="https://github.com" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card fade-up">
+      <p class="project-type">Poster Presentation</p>
+      <p class="project-title">Add your poster title here</p>
+      <p class="project-desc">
+        Presented at [conference or symposium name]. Describe the key finding or message of the poster and what it contributed to the field or your department.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Conference</span>
+        <span class="project-tag">Add your topic</span>
+      </div>
+      <a href="#" class="project-link">View poster →</a>
+    </div>
+
+    <div class="project-card fade-up">
+      <p class="project-type">MSc Research — incoming</p>
+      <p class="project-title">UCL Cancer MSc Dissertation</p>
+      <p class="project-desc">
+        Starting September 2025. Details to follow as the project develops — check back for updates on my MSc research direction and findings.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Cancer Biology</span>
+        <span class="project-tag">UCL</span>
+        <span class="project-tag">2025–2026</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRESENTATIONS -->
+<section id="publications">
+  <p class="section-label">Presentations &amp; outputs</p>
+  <h2>Work I've shared.</h2>
+
+  <div class="pub-list">
+
+    <div class="pub-item fade-up">
+      <div class="pub-year">2024</div>
+      <div>
+        <p class="pub-kind">Undergraduate Dissertation</p>
+        <p class="pub-title">Mathematical Modelling of ceRNA Networks</p>
+        <p class="pub-venue">University of Sheffield · BSc Biomedical Science</p>
+      </div>
+    </div>
+
+    <div class="pub-item fade-up">
+      <div class="pub-year">——</div>
+      <div>
+        <p class="pub-kind">Poster Presentation</p>
+        <p class="pub-title">Add your poster title here</p>
+        <p class="pub-venue">Conference / Symposium Name · Year</p>
+      </div>
+    </div>
+
+    <div class="pub-item fade-up">
+      <div class="pub-year">——</div>
+      <div>
+        <p class="pub-kind">Add any other output</p>
+        <p class="pub-title">Lab report, article, or other work</p>
+        <p class="pub-venue">Institution or publication</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in touch</p>
+  <h2>Let's talk science.</h2>
+  <p class="contact-sub">
+    Open to research conversations, PhD enquiries, and discussions about cancer biology, RNA networks, or computational approaches to medicine.
+  </p>
+  <a href="mailto:sedwardsbio@gmail.com" class="contact-email">
+    sedwardsbio@gmail.com →
+  </a>
+  <div class="social-row">
+    <a href="https://linkedin.com/in/sedwards" target="_blank" class="social-btn">LinkedIn</a>
+    <a href="https://github.com/sedwards" target="_blank" class="social-btn">GitHub</a>
+    <a href="cv.pdf" target="_blank" class="social-btn">CV ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Samuel Edwards</a>
+  <p class="footer-made">Biomedical Scientist · MSc Cancer, UCL</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.projects-grid .project-card, .pub-list .pub-item, .timeline .tl-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 80}ms`;
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--teal)' : '';
+    });
+  });
+</script>
+</body>
+</html>
