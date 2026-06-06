@@ -107,21 +107,21 @@
         requestAnimationFrame(tick);
         t += 0.003;
 
-        /* Ambient drift — clearly visible on mobile */
-        var ambX  = Math.sin(t * 0.9) * 25;
-        var ambY  = Math.cos(t * 0.7) * 18;
-        var scale = 1.25 + Math.sin(t * 0.6) * 0.05;
+        /* Pan background-position: slides the viewport across the image.
+           On mobile the image has more overflow per %, so movement is
+           naturally more visible where the crop is tightest. */
+        var ambBx = Math.sin(t * 0.9) * 8;
+        var ambBy = Math.cos(t * 0.7) * 6;
 
-        /* Mouse parallax: background eases gently opposite to cursor (depth feel) */
-        var targetX = (mouseX - 0.5) * -20;
-        var targetY = (mouseY - 0.5) * -14;
+        /* Mouse parallax on desktop (values in %) */
+        var targetX = (mouseX - 0.5) * -4;
+        var targetY = (mouseY - 0.5) * -3;
         currentX += (targetX - currentX) * 0.04;
         currentY += (targetY - currentY) * 0.04;
 
-        bg.style.transform =
-          'scale(' + scale.toFixed(4) + ') ' +
-          'translate(' + (ambX + currentX).toFixed(2) + 'px, ' +
-                         (ambY + currentY).toFixed(2) + 'px)';
+        bg.style.backgroundPosition =
+          (50 + ambBx + currentX).toFixed(2) + '% ' +
+          (50 + ambBy + currentY).toFixed(2) + '%';
       }
 
       requestAnimationFrame(tick);
