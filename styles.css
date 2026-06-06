@@ -233,7 +233,7 @@ body.nav-active {
 .hero-bg-image {
   position: absolute;
   inset: -6%;
-  background: url('assets/Website%20hero.jpg') center center / cover no-repeat;
+  background: url('Website%20hero.jpg') center center / cover no-repeat;
   transform: scale(1.07);
   will-change: transform;
 }
