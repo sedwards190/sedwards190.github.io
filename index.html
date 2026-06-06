@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Samuel Edwards — Biomedical Science graduate and MSc Cancer student with a research-focused profile in cancer biology.">
+  <meta name="description" content="Samuel Edwards — BSc Biomedical Science graduate and MSc Cancer student.">
   <title>Samuel Edwards</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,71 +13,111 @@
 
   <header class="site-header" role="banner">
     <a href="/" class="header-logo" aria-label="Samuel Edwards — home">SE</a>
-    <nav class="header-nav" aria-label="Site navigation">
+
+    <nav class="header-nav" id="site-nav" aria-label="Site navigation">
       <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Open navigation menu"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
 
   <main>
     <section class="hero" id="hero" aria-labelledby="hero-name">
 
-      <!-- Background video — aria-hidden so screen readers skip it -->
-      <div class="hero-media" aria-hidden="true">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-        >
-          <source src="https://sedwards.co.uk/hero-video.mp4" type="video/mp4">
-        </video>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
       </div>
 
-      <!-- Main content -->
       <div class="hero-content" id="hero-content">
-
-        <p class="hero-eyebrow">Biomedical Science graduate · MSc Cancer student</p>
-
-        <h1 class="hero-name" id="hero-name">Samuel Edwards</h1>
-
-        <p class="hero-headline">Biomedical Science graduate focused on cancer biology.</p>
-
-        <p class="hero-subheading">I'm developing a research-focused profile in cancer biology through postgraduate study, academic projects and biomedical science experience.</p>
-
+        <h1 class="hero-name" id="hero-name">Samuel<br>Edwards</h1>
+        <p class="hero-subtitle">BSc Biomedical Science graduate&nbsp;&middot;&nbsp;MSc Cancer student</p>
         <div class="hero-actions">
-          <!-- TO UPDATE: change the href to point to your actual CV file -->
-          <a href="assets/Samuel-Edwards-CV.pdf" class="btn btn-primary" download>Download CV</a>
+          <a href="Samuel-Edwards-CV.pdf" class="btn btn-primary" download>Download CV</a>
           <a href="#projects" class="btn btn-secondary">View Projects</a>
         </div>
-
-        <nav class="hero-links" aria-label="Contact and profiles">
-          <!-- TO UPDATE: replace samuel@example.com with your real email -->
-          <a href="mailto:samuel@example.com">Email</a>
-          <span aria-hidden="true">·</span>
-          <!-- TO UPDATE: replace with your LinkedIn profile URL -->
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <span aria-hidden="true">·</span>
-          <!-- TO UPDATE: replace with your GitHub profile URL -->
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </nav>
-
       </div>
+
     </section>
+
+    <!-- Minimal anchor placeholders for navigation -->
+    <div id="about"      aria-hidden="true"></div>
+    <div id="education"  aria-hidden="true"></div>
+    <div id="experience" aria-hidden="true"></div>
+    <div id="projects"   aria-hidden="true"></div>
+    <div id="contact"    aria-hidden="true"></div>
   </main>
 
   <script>
+    /* Mobile navigation toggle */
     (function () {
-      var v = document.querySelector('.hero-video');
-      if (!v) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        v.loop = false;
-        v.currentTime = 0;
+      var btn = document.getElementById('nav-toggle');
+      var nav = document.getElementById('site-nav');
+      if (!btn || !nav) return;
+
+      function setOpen(open) {
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        nav.classList.toggle('nav-open', open);
+        document.body.classList.toggle('nav-active', open);
       }
+
+      btn.addEventListener('click', function () {
+        setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () { setOpen(false); });
+      });
+    }());
+
+    /* Ambient background drift + subtle pointer parallax */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var bg = document.querySelector('.hero-bg-image');
+      if (!bg) return;
+
+      var targetX = 0, targetY = 0;
+      var currentX = 0, currentY = 0;
+      var t = 0;
+
+      document.addEventListener('mousemove', function (e) {
+        targetX = (e.clientX / window.innerWidth  - 0.5) * 16;
+        targetY = (e.clientY / window.innerHeight - 0.5) * 10;
+      });
+
+      function tick() {
+        t += 0.00025;
+        /* Very slow sinusoidal ambient drift — period ~380s per cycle */
+        var ambX  = Math.sin(t * 1.1) * 7;
+        var ambY  = Math.cos(t * 0.8) * 5;
+        var scale = 1.07 + Math.sin(t * 0.5) * 0.01;
+        /* Smooth lerp toward pointer */
+        currentX += (targetX - currentX) * 0.025;
+        currentY += (targetY - currentY) * 0.025;
+        bg.style.transform =
+          'scale(' + scale.toFixed(4) + ') ' +
+          'translate(' + (ambX + currentX).toFixed(2) + 'px, ' +
+                         (ambY + currentY).toFixed(2) + 'px)';
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
     }());
   </script>
 

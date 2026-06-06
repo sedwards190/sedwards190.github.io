@@ -7,39 +7,31 @@
    Design Tokens
    ---------------------------------------------------------------- */
 :root {
-  /* Palette */
-  --color-bg:           #0b0909;
-  --color-crimson:      #7c2836;
-  --color-crimson-lit:  #9e3346;
-  --color-off-white:    #ede8e2;
-  --color-text:         #d9d1ca;
-  --color-text-muted:   #7d7370;
-  --color-cyan:         #5bbac9;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  /* Typography */
-  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-body:    'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-white:    #ffffff;
+  --color-white-90: rgba(255, 255, 255, 0.90);
+  --color-white-75: rgba(255, 255, 255, 0.75);
+  --color-violet:   #a48bef;
+  --color-coral:    #ff6b5b;
 
-  /* Spacing (4px base) */
-  --sp-2:  0.5rem;    /*  8px */
-  --sp-3:  0.75rem;   /* 12px */
-  --sp-4:  1rem;      /* 16px */
-  --sp-5:  1.25rem;   /* 20px */
-  --sp-6:  1.5rem;    /* 24px */
-  --sp-8:  2rem;      /* 32px */
-  --sp-10: 2.5rem;    /* 40px */
-  --sp-12: 3rem;      /* 48px */
-  --sp-16: 4rem;      /* 64px */
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
 
-  /* Z-index layers */
   --z-bg:      0;
   --z-overlay: 10;
   --z-content: 20;
+  --z-nav-mob: 90;
   --z-header:  100;
 
-  /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur:      220ms;
+  --dur: 220ms;
 }
 
 /* ----------------------------------------------------------------
@@ -60,9 +52,8 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
+  background: #090511;
+  font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -70,21 +61,25 @@ body {
   overflow-x: hidden;
 }
 
+body.nav-active {
+  overflow: hidden;
+}
+
 /* ----------------------------------------------------------------
-   Skip Link  (accessibility — appears on keyboard focus)
+   Skip Link
    ---------------------------------------------------------------- */
 .skip-link {
   position: absolute;
   top: -100%;
   left: var(--sp-4);
   z-index: 200;
-  padding: var(--sp-2) var(--sp-4);
-  background: var(--color-crimson);
-  color: var(--color-off-white);
-  font-family: var(--font-body);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--color-violet);
+  color: var(--color-white);
+  font-family: var(--font-sans);
   font-size: 0.875rem;
   text-decoration: none;
-  border-radius: 0 0 3px 3px;
+  border-radius: 0 0 4px 4px;
   transition: top var(--dur) var(--ease-out);
 }
 
@@ -109,13 +104,15 @@ body {
 
 /* Monogram logo */
 .header-logo {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  color: var(--color-off-white);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-white);
   text-decoration: none;
-  opacity: 0.85;
+  opacity: 0.92;
+  position: relative;
+  z-index: var(--z-header);
   transition: opacity var(--dur) var(--ease-out);
 }
 
@@ -125,12 +122,12 @@ body {
 
 .header-logo:focus-visible {
   opacity: 1;
-  outline: 2px solid var(--color-cyan);
+  outline: 2px solid var(--color-violet);
   outline-offset: 4px;
   border-radius: 2px;
 }
 
-/* Navigation */
+/* Desktop nav */
 .header-nav {
   display: flex;
   align-items: center;
@@ -138,168 +135,168 @@ body {
 }
 
 .header-nav a {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-size: 0.71rem;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-white-75);
   text-decoration: none;
   transition: color var(--dur) var(--ease-out);
 }
 
 .header-nav a:hover {
-  color: var(--color-off-white);
+  color: var(--color-white);
 }
 
 .header-nav a:focus-visible {
-  color: var(--color-off-white);
-  outline: 2px solid var(--color-cyan);
+  color: var(--color-white);
+  outline: 2px solid var(--color-violet);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
+/* Hamburger — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: var(--z-header);
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition:
+    opacity  var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-violet);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Animated X when open */
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
 /* ----------------------------------------------------------------
-   Hero — Outer wrapper
+   Hero — Outer
    ---------------------------------------------------------------- */
 .hero {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  min-height: 100dvh; /* accounts for mobile browser chrome */
+  min-height: 100dvh;
   overflow: hidden;
-  background-color: var(--color-bg); /* shown if video fails to load */
+  text-align: center;
+  background: #090511;
 }
 
 /* ----------------------------------------------------------------
-   Hero — Video background
+   Hero — Background image
+   -6% inset + ~1.07 JS scale gives ~15% headroom each side for
+   drift and parallax, keeping the image bright and undistorted.
    ---------------------------------------------------------------- */
-.hero-media {
+.hero-bg {
   position: absolute;
   inset: 0;
   z-index: var(--z-bg);
+  overflow: hidden;
 }
 
-.hero-video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center right;
-  filter: brightness(1.4) contrast(1.05);
+.hero-bg-image {
+  position: absolute;
+  inset: -6%;
+  background: url('assets/Website%20hero.jpg') center center / cover no-repeat;
+  transform: scale(1.07);
+  will-change: transform;
 }
 
 /* ----------------------------------------------------------------
-   Hero — Gradient overlay
-   Darkest on the left (text zone), transparent on the right
-   so the biomedical visual remains visible.
+   Hero — Overlay
+   Radial gradient: very subtle dark centre for text contrast,
+   edges stay open so the image remains bright and luminous.
    ---------------------------------------------------------------- */
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: var(--z-overlay);
-  background: linear-gradient(
-    to right,
-    rgba(11, 9, 9, 0.92) 0%,
-    rgba(11, 9, 9, 0.70) 35%,
-    rgba(11, 9, 9, 0.00) 50%
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 48%,
+    rgba(8, 4, 18, 0.10) 0%,
+    rgba(8, 4, 18, 0.30) 100%
   );
 }
 
-/* Mobile: keep enough darkness for text but let video show on right */
-@media (max-width: 899px) {
-  .hero-overlay {
-    background: linear-gradient(
-      to right,
-      rgba(11, 9, 9, 0.95) 0%,
-      rgba(11, 9, 9, 0.88) 50%,
-      rgba(11, 9, 9, 0.55) 100%
-    );
-  }
-}
-
-/* Reduced motion: static poster needs a strong uniform overlay */
-@media (prefers-reduced-motion: reduce) {
-  .hero-overlay {
-    background: rgba(11, 9, 9, 0.68);
-  }
-}
-
 /* ----------------------------------------------------------------
-   Hero — Content panel
+   Hero — Content
    ---------------------------------------------------------------- */
 .hero-content {
   position: relative;
   z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  /* Mobile: top padding clears the fixed header */
-  padding: calc(var(--sp-16) + 2.5rem) var(--sp-6) var(--sp-12);
-}
-
-/* Desktop: constrain to left half and push in from the edge */
-@media (min-width: 900px) {
-  .hero-content {
-    max-width: 520px;
-    margin-left: max(3.5rem, 7vw);
-    padding: var(--sp-8) 0;
-  }
-}
-
-/* ----------------------------------------------------------------
-   Hero — Eyebrow / Status line
-   ---------------------------------------------------------------- */
-.hero-eyebrow {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-cyan);
-  margin-bottom: var(--sp-5);
-  opacity: 0.9;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: calc(var(--sp-16) + 2rem) var(--sp-8) var(--sp-12);
 }
 
 /* ----------------------------------------------------------------
    Hero — Name
    ---------------------------------------------------------------- */
 .hero-name {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6.5vw, 5.5rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: var(--color-off-white);
-  margin-bottom: var(--sp-5);
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 10vw, 9rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  margin-bottom: 0.55em;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.38),
+    0 6px 48px rgba(0, 0, 0, 0.22);
 }
 
 /* ----------------------------------------------------------------
-   Hero — Headline
-   Italic serif gives it a journal-citation quality.
+   Hero — Subtitle
    ---------------------------------------------------------------- */
-.hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
   font-weight: 400;
-  font-style: italic;
-  line-height: 1.55;
-  color: rgba(237, 232, 226, 0.72);
-  max-width: 44ch;
-  margin-bottom: var(--sp-5);
-}
-
-/* ----------------------------------------------------------------
-   Hero — Subheading
-   ---------------------------------------------------------------- */
-.hero-subheading {
-  font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1vw, 0.95rem);
-  font-weight: 300;
-  line-height: 1.8;
-  color: var(--color-text-muted);
-  max-width: 50ch;
+  letter-spacing: 0.06em;
+  color: var(--color-white-90);
+  max-width: 52ch;
   margin-bottom: var(--sp-10);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.30);
 }
 
 /* ----------------------------------------------------------------
@@ -308,8 +305,8 @@ body {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp-3);
-  margin-bottom: var(--sp-6);
+  gap: var(--sp-4);
+  justify-content: center;
 }
 
 .btn {
@@ -317,14 +314,14 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: 0.7rem 1.6rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
+  padding: 0.7rem 1.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.77rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 100px;
   border: 1px solid transparent;
   white-space: nowrap;
   cursor: pointer;
@@ -338,84 +335,50 @@ body {
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-cyan);
+  outline: 2px solid var(--color-violet);
   outline-offset: 3px;
 }
 
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
-/* Primary — filled crimson */
+/* Primary — frosted glass */
 .btn-primary {
-  background-color: var(--color-crimson);
-  border-color:     var(--color-crimson);
-  color:            var(--color-off-white);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.52);
+  color: var(--color-white);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-crimson-lit);
-  border-color:     var(--color-crimson-lit);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.72);
 }
 
-/* Secondary — ghost / outline */
+/* Secondary — outline */
 .btn-secondary {
-  background-color: transparent;
-  border-color:     rgba(237, 232, 226, 0.28);
-  color:            var(--color-text);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.34);
+  color: var(--color-white-90);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(237, 232, 226, 0.07);
-  border-color:     rgba(237, 232, 226, 0.55);
-  color:            var(--color-off-white);
-}
-
-/* ----------------------------------------------------------------
-   Hero — Small links (Email · LinkedIn · GitHub)
-   ---------------------------------------------------------------- */
-.hero-links {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-
-.hero-links a {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  transition: color var(--dur) var(--ease-out);
-}
-
-.hero-links a:hover {
-  color: var(--color-cyan);
-}
-
-.hero-links a:focus-visible {
-  color: var(--color-cyan);
-  outline: 2px solid var(--color-cyan);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* Dot separator */
-.hero-links span {
-  color: rgba(125, 115, 112, 0.45);
-  font-size: 0.65rem;
-  user-select: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: var(--color-white);
 }
 
 /* ----------------------------------------------------------------
    Entrance Animation
-   Elements fade and rise into place on load, staggered.
+   Elements stagger in on load; all motion disabled for users
+   who prefer reduced motion.
    ---------------------------------------------------------------- */
-@keyframes fadeSlideUp {
+@keyframes heroFadeUp {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -423,40 +386,24 @@ body {
   }
 }
 
-.hero-eyebrow,
-.hero-name,
-.hero-headline,
-.hero-subheading,
-.hero-actions,
-.hero-links {
-  animation: fadeSlideUp 650ms var(--ease-out) both;
-}
+.hero-name     { animation: heroFadeUp 900ms var(--ease-out)  80ms both; }
+.hero-subtitle { animation: heroFadeUp 900ms var(--ease-out) 250ms both; }
+.hero-actions  { animation: heroFadeUp 900ms var(--ease-out) 420ms both; }
 
-.hero-eyebrow    { animation-delay:  60ms; }
-.hero-name       { animation-delay: 150ms; }
-.hero-headline   { animation-delay: 240ms; }
-.hero-subheading { animation-delay: 320ms; }
-.hero-actions    { animation-delay: 400ms; }
-.hero-links      { animation-delay: 460ms; }
-
-/* Disable all animation for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .hero-eyebrow,
   .hero-name,
-  .hero-headline,
-  .hero-subheading,
-  .hero-actions,
-  .hero-links {
+  .hero-subtitle,
+  .hero-actions {
     animation: none;
   }
 }
 
 /* ----------------------------------------------------------------
-   Responsive — Tablet
+   Responsive — Large tablet
    ---------------------------------------------------------------- */
-@media (max-width: 899px) {
+@media (max-width: 1024px) {
   .site-header {
-    padding: var(--sp-4) var(--sp-6);
+    padding: var(--sp-5) var(--sp-6);
   }
 
   .header-nav {
@@ -465,25 +412,69 @@ body {
 }
 
 /* ----------------------------------------------------------------
-   Responsive — Mobile
+   Responsive — Tablet
    ---------------------------------------------------------------- */
-@media (max-width: 480px) {
+@media (max-width: 899px) {
+  .hero-content {
+    padding-left: var(--sp-6);
+    padding-right: var(--sp-6);
+  }
+}
+
+/* ----------------------------------------------------------------
+   Responsive — Mobile (hamburger nav)
+   ---------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .site-header {
+    padding: var(--sp-4) var(--sp-5);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Full-screen frosted overlay nav */
   .header-nav {
-    gap: var(--sp-4);
+    position: fixed;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    background: rgba(10, 5, 20, 0.94);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: var(--z-nav-mob);
+  }
+
+  .header-nav.nav-open {
+    display: flex;
   }
 
   .header-nav a {
-    font-size: 0.65rem;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--color-white-90);
   }
 
-  /* Stack buttons vertically on very small screens */
+  .hero-content {
+    padding-left: var(--sp-5);
+    padding-right: var(--sp-5);
+  }
+}
+
+/* ----------------------------------------------------------------
+   Responsive — Small mobile
+   ---------------------------------------------------------------- */
+@media (max-width: 480px) {
   .hero-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .btn {
     width: 100%;
-    max-width: 260px;
+    max-width: 240px;
   }
 }
