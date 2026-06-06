@@ -676,6 +676,7 @@ body.nav-active {
    Contact Section
    ================================================================ */
 .contact {
+  position: relative;
   background-image: url('Divider.png');
   background-repeat: no-repeat;
   background-position: top center;
@@ -683,6 +684,23 @@ body.nav-active {
   background-color: #ffffff;
   padding: clamp(8rem, 18vw, 14rem) 0 8rem;
   text-align: center;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(8rem, 18vw, 14rem);
+  background: linear-gradient(to bottom, transparent 50%, #ffffff 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-inner {
