@@ -74,13 +74,12 @@
   </main>
 
   <script>
-    // If the user prefers reduced motion, pause the video immediately.
-    // The autoplay attribute handles playback in all other cases.
     (function () {
-      var video = document.querySelector('.hero-video');
-      if (!video) return;
+      var v = document.querySelector('.hero-video');
+      if (!v) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        video.pause();
+        v.loop = false;
+        v.currentTime = 0;
       }
     }());
   </script>
