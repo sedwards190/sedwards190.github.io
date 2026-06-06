@@ -671,3 +671,111 @@ body.nav-active {
     gap: 2.5rem;
   }
 }
+
+/* ================================================================
+   Contact Section
+   ================================================================ */
+.contact {
+  background: #090511;
+  padding: 7rem 0 8rem;
+  text-align: center;
+}
+
+.contact-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-accent-line {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-coral), var(--color-violet));
+  border-radius: 1px;
+  margin-bottom: var(--sp-6);
+}
+
+.contact-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--color-white);
+  margin-bottom: var(--sp-6);
+}
+
+.contact-body {
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--color-white-75);
+  max-width: 44ch;
+  margin-bottom: var(--sp-10);
+}
+
+.contact-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  width: 100%;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 8px;
+  color: var(--color-white-90);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition:
+    background var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--color-white);
+}
+
+.contact-link:focus-visible {
+  outline: 2px solid var(--color-violet);
+  outline-offset: 3px;
+}
+
+.contact-link svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.contact-link:hover svg {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------------
+   Contact — Responsive
+   ---------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .contact {
+    padding: 4rem 0 5rem;
+  }
+
+  .contact-inner {
+    padding: 0 var(--sp-5);
+  }
+
+  .contact-link {
+    padding: var(--sp-4) var(--sp-5);
+  }
+}
