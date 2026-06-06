@@ -673,25 +673,15 @@ body.nav-active {
 }
 
 /* ================================================================
-   Section Divider
-   ================================================================ */
-.section-divider {
-  display: block;
-  line-height: 0;
-}
-
-.divider-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* ================================================================
    Contact Section
    ================================================================ */
 .contact {
-  background: #ffffff;
-  padding: 7rem 0 8rem;
+  background-image: url('Divider.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  background-color: #ffffff;
+  padding: clamp(8rem, 18vw, 14rem) 0 8rem;
   text-align: center;
 }
 
