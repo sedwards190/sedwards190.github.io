@@ -105,12 +105,12 @@
 
       function tick() {
         requestAnimationFrame(tick);
-        t += 0.0003;
+        t += 0.001;
 
-        /* Very slow ambient sinusoidal drift — never feels static on mobile */
-        var ambX  = Math.sin(t * 0.9) * 5;
-        var ambY  = Math.cos(t * 0.7) * 3;
-        var scale = 1.06 + Math.sin(t * 0.4) * 0.008;
+        /* Ambient drift — visible on mobile crop */
+        var ambX  = Math.sin(t * 0.9) * 15;
+        var ambY  = Math.cos(t * 0.7) * 10;
+        var scale = 1.14 + Math.sin(t * 0.8) * 0.03;
 
         /* Mouse parallax: background eases gently opposite to cursor (depth feel) */
         var targetX = (mouseX - 0.5) * -20;

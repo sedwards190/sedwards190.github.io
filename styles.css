@@ -234,7 +234,7 @@ body.nav-active {
   position: absolute;
   inset: 0;
   background: url('Website%20hero.jpg') center center / cover no-repeat;
-  transform: scale(1.06);
+  transform: scale(1.14);
   will-change: transform;
 }
 
