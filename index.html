@@ -30,13 +30,14 @@
       <div class="hero-media" aria-hidden="true">
         <video
           class="hero-video"
-          poster="assets/hero-poster.jpg"
+          poster="hero-poster.jpg"
+          autoplay
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
         >
-          <source src="assets/hero-video.mp4" type="video/mp4">
+          <source src="hero-video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
       </div>
@@ -74,16 +75,14 @@
   </main>
 
   <script>
-    // Play the video only if the user has not requested reduced motion.
-    // With no autoplay attribute in HTML, the video starts paused and
-    // shows the poster image (assets/hero-poster.jpg) while waiting.
+    // If the user prefers reduced motion, pause the video immediately.
+    // The autoplay attribute handles playback in all other cases.
     (function () {
       var video = document.querySelector('.hero-video');
       if (!video) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      video.play().catch(function () {
-        // Autoplay was blocked by the browser — poster remains visible.
-      });
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.pause();
+      }
     }());
   </script>
 
