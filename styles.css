@@ -727,33 +727,39 @@ body.nav-active {
 
 .contact-links {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
   width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
 }
 
 .contact-link {
   display: flex;
   align-items: center;
   gap: var(--sp-4);
-  padding: var(--sp-5) var(--sp-6);
-  background:
-    linear-gradient(#f7f7f7, #f7f7f7) padding-box,
-    linear-gradient(135deg, #f9d423, #f97316, #ec4899, #9d4edd) border-box;
-  border: 2px solid transparent;
-  border-radius: 8px;
+  padding: var(--sp-5) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
   color: #1a1a1a;
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: background var(--dur) var(--ease-out);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: transparent;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.contact-link::after {
+  content: '→';
+  margin-left: auto;
+  font-size: 1rem;
+  transition: transform 0.3s var(--ease-out);
 }
 
 .contact-link:hover,
 .contact-link:focus-visible {
-  background:
-    linear-gradient(#efefef, #efefef) padding-box,
-    linear-gradient(135deg, #f9d423, #f97316, #ec4899, #9d4edd) border-box;
+  color: #000000;
+}
+
+.contact-link:hover::after {
+  transform: translateX(5px);
 }
 
 .contact-link:focus-visible {
@@ -763,12 +769,12 @@ body.nav-active {
 
 .contact-link svg {
   flex-shrink: 0;
-  opacity: 0.6;
+  opacity: 0.5;
   transition: opacity var(--dur) var(--ease-out);
 }
 
 .contact-link:hover svg {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 /* ----------------------------------------------------------------
