@@ -95,11 +95,13 @@
       var currentX = 0, currentY = 0;
       var t = 0;
 
-      /* Track mouse on desktop only */
-      document.addEventListener('mousemove', function (e) {
-        mouseX = e.clientX / window.innerWidth;
-        mouseY = e.clientY / window.innerHeight;
-      });
+      /* Only track mouse on devices with a real pointer (not touchscreens) */
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('mousemove', function (e) {
+          mouseX = e.clientX / window.innerWidth;
+          mouseY = e.clientY / window.innerHeight;
+        });
+      }
 
       function tick() {
         requestAnimationFrame(tick);
