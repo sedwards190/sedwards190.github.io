@@ -105,13 +105,13 @@
 
       function tick() {
         requestAnimationFrame(tick);
-        t += 0.003;
+        t += 0.006;
 
         /* Pan background-position: slides the viewport across the image.
            On mobile the image has more overflow per %, so movement is
            naturally more visible where the crop is tightest. */
-        var ambBx = Math.sin(t * 0.9) * 8;
-        var ambBy = Math.cos(t * 0.7) * 6;
+        var ambBx = Math.sin(t * 0.9) * 12;
+        var ambBy = Math.cos(t * 0.7) * 9;
 
         /* Mouse parallax on desktop (values in %) */
         var targetX = (mouseX - 0.5) * -4;
