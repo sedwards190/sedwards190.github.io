@@ -219,7 +219,9 @@ body.nav-active {
 }
 
 /* ----------------------------------------------------------------
-   Hero — Video background
+   Hero — Background image
+   scale(1.06) gives ~43px headroom each side on a 1440px screen,
+   enough for the ambient drift (±5px) + mouse parallax (±10px).
    ---------------------------------------------------------------- */
 .hero-bg {
   position: absolute;
@@ -228,13 +230,12 @@ body.nav-active {
   overflow: hidden;
 }
 
-.hero-video {
+.hero-bg-image {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  background: url('Website%20hero.jpg') center center / cover no-repeat;
+  transform: scale(1.06);
+  will-change: transform;
 }
 
 /* ----------------------------------------------------------------
@@ -389,13 +390,6 @@ body.nav-active {
 .hero-subtitle { animation: heroFadeUp 900ms var(--ease-out) 250ms both; }
 .hero-actions  { animation: heroFadeUp 900ms var(--ease-out) 420ms both; }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-name,
-  .hero-subtitle,
-  .hero-actions {
-    animation: none;
-  }
-}
 
 /* ----------------------------------------------------------------
    Responsive — Large tablet
