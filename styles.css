@@ -187,6 +187,7 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center right;
+  filter: brightness(4) contrast(1.2);
 }
 
 /* ----------------------------------------------------------------
@@ -200,10 +201,9 @@ body {
   z-index: var(--z-overlay);
   background: linear-gradient(
     to right,
-    rgba(11, 9, 9, 0.95) 0%,
-    rgba(11, 9, 9, 0.88) 30%,
-    rgba(11, 9, 9, 0.50) 55%,
-    rgba(11, 9, 9, 0.00) 75%
+    rgba(11, 9, 9, 0.92) 0%,
+    rgba(11, 9, 9, 0.70) 35%,
+    rgba(11, 9, 9, 0.00) 50%
   );
 }
 
