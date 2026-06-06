@@ -15,7 +15,7 @@
     <a href="/" class="header-logo" aria-label="Samuel Edwards — home">SE</a>
 
     <nav class="header-nav" id="site-nav" aria-label="Site navigation">
-      <a href="about">About</a>
+      <a href="#about">About</a>
       <a href="education">Education</a>
       <a href="experience">Experience</a>
       <a href="projects">Projects</a>
@@ -55,8 +55,32 @@
 
     </section>
 
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about-inner">
+
+        <div class="about-text reveal">
+          <div class="about-accent-line" aria-hidden="true"></div>
+          <h2 class="about-heading" id="about-heading">About</h2>
+          <p class="about-body">I am a Master's student in Cancer at University College London. In 2026, I completed my Bachelor's degree in Biomedical Science at the University of Sheffield. I have developed a strong foundation in both computational biology and laboratory-based research, and I am working towards a career as a research scientist. I am particularly interested in cancer multi-omics and tumour evolution, and how these approaches can be used to better understand treatment resistance.</p>
+        </div>
+
+        <div class="about-image-wrap reveal reveal-delay">
+          <img
+            src="profile.jpg"
+            alt="Samuel Edwards"
+            class="about-image"
+            loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          >
+          <div class="about-image-placeholder" aria-hidden="true">
+            <span>SE</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Minimal anchor placeholders for navigation -->
-    <div id="about"      aria-hidden="true"></div>
     <div id="education"  aria-hidden="true"></div>
     <div id="experience" aria-hidden="true"></div>
     <div id="projects"   aria-hidden="true"></div>
@@ -125,6 +149,23 @@
       }
 
       requestAnimationFrame(tick);
+    }());
+
+    /* Scroll reveal — IntersectionObserver */
+    (function () {
+      var reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(function (el) { observer.observe(el); });
     }());
   </script>
 
