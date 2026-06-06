@@ -219,9 +219,7 @@ body.nav-active {
 }
 
 /* ----------------------------------------------------------------
-   Hero — Background image
-   -6% inset + ~1.07 JS scale gives ~15% headroom each side for
-   drift and parallax, keeping the image bright and undistorted.
+   Hero — Video background
    ---------------------------------------------------------------- */
 .hero-bg {
   position: absolute;
@@ -230,12 +228,13 @@ body.nav-active {
   overflow: hidden;
 }
 
-.hero-bg-image {
+.hero-video {
   position: absolute;
-  inset: -6%;
-  background: url('Website%20hero.jpg') center center / cover no-repeat;
-  transform: scale(1.07);
-  will-change: transform;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ----------------------------------------------------------------

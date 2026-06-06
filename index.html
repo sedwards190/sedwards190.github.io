@@ -40,7 +40,15 @@
     <section class="hero" id="hero" aria-labelledby="hero-name">
 
       <div class="hero-bg" aria-hidden="true">
-        <div class="hero-bg-image"></div>
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+        >
+          <source src="Video-for-hero.mp4" type="video/mp4">
+        </video>
         <div class="hero-overlay"></div>
       </div>
 
@@ -86,38 +94,43 @@
       });
     }());
 
-    /* Ambient background drift + subtle pointer parallax */
+    /* Video ping-pong: play forward → reverse → forward → repeat */
     (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var bg = document.querySelector('.hero-bg-image');
-      if (!bg) return;
+      var video = document.querySelector('.hero-video');
+      if (!video) return;
 
-      var targetX = 0, targetY = 0;
-      var currentX = 0, currentY = 0;
-      var t = 0;
-
-      document.addEventListener('mousemove', function (e) {
-        targetX = (e.clientX / window.innerWidth  - 0.5) * 16;
-        targetY = (e.clientY / window.innerHeight - 0.5) * 10;
-      });
-
-      function tick() {
-        t += 0.00025;
-        /* Very slow sinusoidal ambient drift — period ~380s per cycle */
-        var ambX  = Math.sin(t * 1.1) * 7;
-        var ambY  = Math.cos(t * 0.8) * 5;
-        var scale = 1.07 + Math.sin(t * 0.5) * 0.01;
-        /* Smooth lerp toward pointer */
-        currentX += (targetX - currentX) * 0.025;
-        currentY += (targetY - currentY) * 0.025;
-        bg.style.transform =
-          'scale(' + scale.toFixed(4) + ') ' +
-          'translate(' + (ambX + currentX).toFixed(2) + 'px, ' +
-                         (ambY + currentY).toFixed(2) + 'px)';
-        requestAnimationFrame(tick);
+      /* Respect reduced motion — freeze on first frame */
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.pause();
+        video.currentTime = 0;
+        return;
       }
 
-      requestAnimationFrame(tick);
+      var reversing = false;
+      var lastTimestamp = null;
+
+      function reverseStep(timestamp) {
+        if (!reversing) return;
+        if (lastTimestamp !== null) {
+          var elapsed = (timestamp - lastTimestamp) / 1000;
+          video.currentTime = Math.max(0, video.currentTime - elapsed);
+        }
+        lastTimestamp = timestamp;
+        if (video.currentTime <= 0.05) {
+          reversing = false;
+          lastTimestamp = null;
+          video.currentTime = 0;
+          video.play();
+          return;
+        }
+        requestAnimationFrame(reverseStep);
+      }
+
+      video.addEventListener('ended', function () {
+        reversing = true;
+        lastTimestamp = null;
+        requestAnimationFrame(reverseStep);
+      });
     }());
   </script>
 
