@@ -618,21 +618,13 @@ body.nav-active {
 
 .about-bar-1 {
   height: clamp(20px, 3.2vw, 44px);
-  left: -35%;
+  left: -45%;
   right: 0;
-  top: 28%;
-}
-
-.about-bar-2 {
-  height: clamp(16px, 2.5vw, 36px);
-  left: -15%;
-  right: 0;
-  top: 64%;
+  top: 78%;
 }
 
 @media (max-width: 899px) {
-  .about-bar-1 { left: 0; top: 22%; }
-  .about-bar-2 { left: 0; top: 60%; }
+  .about-bar-1 { left: 0; top: 72%; }
 }
 
 /* ----------------------------------------------------------------

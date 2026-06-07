@@ -77,7 +77,6 @@
             <span>SE</span>
           </div>
           <div class="about-bar about-bar-1" aria-hidden="true"></div>
-          <div class="about-bar about-bar-2" aria-hidden="true"></div>
         </div>
 
       </div>
@@ -331,7 +330,6 @@
     /* About bars — scroll parallax */
     (function () {
       var bar1 = document.querySelector('.about-bar-1');
-      var bar2 = document.querySelector('.about-bar-2');
       var section = document.querySelector('.about');
       if (!bar1 || !section) return;
 
@@ -342,7 +340,6 @@
         var viewH = window.innerHeight;
         var progress = Math.max(0, Math.min(1, (viewH - rect.top) / (viewH + rect.height)));
         bar1.style.transform = 'translateY(' + ((progress - 0.5) * 25).toFixed(1) + 'px)';
-        bar2.style.transform = 'translateY(' + ((progress - 0.5) * -15).toFixed(1) + 'px)';
         ticking = false;
       }
 
