@@ -174,7 +174,7 @@
       requestAnimationFrame(tick);
     }());
 
-    /* Header hide + hero parallax (data-speed="1.1" equivalent) */
+    /* Header scroll-fade + hero parallax */
     (function () {
       var header = document.querySelector('.site-header');
       var heroContent = document.querySelector('.hero-content');
@@ -184,11 +184,21 @@
         var y = window.scrollY;
 
         if (header) {
-          header.classList.toggle('header-hidden', y > 60);
+          if (y <= 0) {
+            /* At rest — let the CSS fade-in-static animation run unobstructed */
+            header.style.opacity = '';
+            header.style.transform = '';
+            header.style.pointerEvents = '';
+          } else {
+            /* Fade out over first 80px of scroll; drift up at same rate as hero */
+            var opacity = Math.max(1 - y / 80, 0);
+            header.style.opacity = opacity.toFixed(3);
+            header.style.transform = 'translateY(' + (-y * 0.1).toFixed(1) + 'px)';
+            header.style.pointerEvents = opacity === 0 ? 'none' : '';
+          }
         }
 
         if (heroContent) {
-          /* Mirrors Enveda's data-speed="1.1": element drifts up at 10% of scroll */
           heroContent.style.transform = 'translateY(' + (-y * 0.1).toFixed(1) + 'px)';
         }
 
