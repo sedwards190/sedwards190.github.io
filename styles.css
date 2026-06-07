@@ -657,6 +657,291 @@ body.nav-active {
 }
 
 /* ================================================================
+   Education Section
+   ================================================================ */
+.education {
+  background: #ffffff;
+  padding: 7rem 0 8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.education-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--sp-16);
+}
+
+.education-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: #0d0d0d;
+  margin-bottom: 4rem;
+}
+
+/* Primary degrees */
+.edu-degrees {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.edu-card {
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  padding-top: 2rem;
+}
+
+.edu-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.edu-years {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+
+.edu-badge {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-violet);
+  background: rgba(164, 139, 239, 0.1);
+  padding: 0.22em 0.65em;
+  border-radius: 100px;
+}
+
+.edu-tag {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.edu-institution {
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #0d0d0d;
+  margin-bottom: 0.35rem;
+}
+
+.edu-degree {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.1rem;
+}
+
+.edu-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.8;
+  color: #2a2a2a;
+}
+
+/* Additional training — SKKU */
+.edu-training {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.edu-training-inner {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 820px;
+}
+
+.edu-training-year {
+  padding-top: 0.18rem;
+}
+
+.edu-training-institution {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0d0d0d;
+  margin-bottom: 0.25rem;
+}
+
+.edu-training-degree {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.48);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.edu-training-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #3a3a3a;
+}
+
+/* Academic highlights */
+.edu-highlights {
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  padding-top: 2.5rem;
+}
+
+.edu-highlights-heading {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.38);
+  margin-bottom: 1.25rem;
+}
+
+.edu-highlights-list {
+  list-style: none;
+  max-width: 820px;
+}
+
+.edu-highlight-item {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.edu-highlight-type {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.edu-highlight-title {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+.edu-highlight-score {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-violet);
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------
+   Education — Responsive tablet
+   ---------------------------------------------------------------- */
+@media (max-width: 899px) {
+  .education {
+    padding: 5rem 0 6rem;
+  }
+
+  .education-inner {
+    padding: 0 var(--sp-8);
+  }
+
+  .education-heading {
+    margin-bottom: 3rem;
+  }
+
+  .edu-degrees {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .edu-training-inner {
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+  }
+
+  .edu-highlight-item {
+    grid-template-columns: 90px 1fr auto;
+    gap: 1rem;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Education — Responsive mobile
+   ---------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .education {
+    padding: 4rem 0 5rem;
+  }
+
+  .education-inner {
+    padding: 0 var(--sp-5);
+  }
+
+  .edu-training-inner {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .edu-training-year {
+    padding-top: 0;
+  }
+
+  .edu-highlight-item {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+
+  .edu-highlight-type {
+    display: none;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Reduced motion — global reveal override
+   ---------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .fade-in-up,
+  .fade-in-up-delay,
+  .fade-in,
+  .fade-in-static,
+  .fade-in-delay,
+  .fade-in-delay-2,
+  .fade-in-delay-3 {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ================================================================
    Contact Section
    ================================================================ */
 .contact {
@@ -716,9 +1001,13 @@ body.nav-active {
 }
 
 .contact-link::after {
-  content: '→';
+  content: '';
+  display: block;
+  width: 18px;
+  height: 18px;
   margin-left: auto;
-  font-size: 1rem;
+  flex-shrink: 0;
+  background: url('icon-right-arrow.svg') center / contain no-repeat;
   transition: transform 0.3s var(--ease-out);
 }
 
