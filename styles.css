@@ -278,7 +278,7 @@ body.nav-active {
 .hero-bg-image {
   position: absolute;
   inset: -40px;
-  background: url('Website%20hero.jpg') 50% 50% / cover no-repeat;
+  background: url('Website%20hero1.jpg') 50% 50% / cover no-repeat;
   will-change: transform;
 }
 
