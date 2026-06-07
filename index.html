@@ -45,11 +45,17 @@
       </div>
 
       <div class="hero-content" id="hero-content">
-        <h1 class="hero-name" id="hero-name">Samuel<br>Edwards</h1>
-        <p class="hero-subtitle">BSc Biomedical Science graduate&nbsp;&middot;&nbsp;MSc Cancer student</p>
-        <div class="hero-actions">
-          <a href="CV%20(2).pdf" class="btn btn-primary" download><span>Download CV</span></a>
-          <a href="#projects" class="btn btn-secondary"><span>View Projects</span></a>
+        <div class="hero-reveal-wrap">
+          <h1 class="hero-name" id="hero-name">Samuel<br>Edwards</h1>
+        </div>
+        <div class="hero-reveal-wrap">
+          <p class="hero-subtitle">BSc Biomedical Science graduate&nbsp;&middot;&nbsp;MSc Cancer student</p>
+        </div>
+        <div class="hero-reveal-wrap">
+          <div class="hero-actions">
+            <a href="CV%20(2).pdf" class="btn btn-primary" download><span>Download CV</span></a>
+            <a href="#projects" class="btn btn-secondary"><span>View Projects</span></a>
+          </div>
         </div>
       </div>
 
@@ -172,30 +178,14 @@
       requestAnimationFrame(tick);
     }());
 
-    /* Header fade-out + hero parallax on scroll */
+    /* Header hide on scroll */
     (function () {
       var header = document.querySelector('.site-header');
-      var heroContent = document.querySelector('.hero-content');
+      if (!header) return;
       var ticking = false;
 
       function update() {
-        var y = window.scrollY;
-
-        if (header) {
-          if (y > 60) {
-            header.classList.add('header-hidden');
-          } else {
-            header.classList.remove('header-hidden');
-          }
-        }
-
-        if (heroContent) {
-          var vh = window.innerHeight;
-          var progress = Math.min(y / (vh * 0.65), 1);
-          heroContent.style.transform = 'translateY(' + (progress * -60).toFixed(1) + 'px)';
-          heroContent.style.opacity = Math.max(1 - progress * 1.6, 0).toFixed(3);
-        }
-
+        header.classList.toggle('header-hidden', window.scrollY > 60);
         ticking = false;
       }
 

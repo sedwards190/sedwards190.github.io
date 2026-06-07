@@ -406,20 +406,19 @@ body.nav-active {
    Elements stagger in on load; all motion disabled for users
    who prefer reduced motion.
    ---------------------------------------------------------------- */
-@keyframes heroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes heroReveal {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
 }
 
-.hero-name     { animation: heroFadeUp 900ms var(--ease-out)  80ms both; }
-.hero-subtitle { animation: heroFadeUp 900ms var(--ease-out) 250ms both; }
-.hero-actions  { animation: heroFadeUp 900ms var(--ease-out) 420ms both; }
+.hero-reveal-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-name     { animation: heroReveal 1.1s var(--ease-out) 0.08s both; }
+.hero-subtitle { animation: heroReveal 1.1s var(--ease-out) 0.22s both; }
+.hero-actions  { animation: heroReveal 1.1s var(--ease-out) 0.38s both; }
 
 
 /* ----------------------------------------------------------------
