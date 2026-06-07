@@ -656,102 +656,33 @@ body.nav-active {
   }
 }
 
+
 /* ================================================================
-   Vessel Divider
+   Image Divider
    ================================================================ */
-.vessel-divider {
+.img-divider {
   position: relative;
-  height: 130px;
+  height: 280px;
   overflow: hidden;
-  /* Same hero image + dark overlay — matches the hero section exactly */
-  background:
-    linear-gradient(rgba(9, 5, 17, 0.68), rgba(9, 5, 17, 0.68)),
-    url('Website%20hero1.jpg') 50% 40% / cover no-repeat;
 }
 
-/* Tunnel — sits above cells, darkens top/bottom vessel walls */
-.vessel-divider::before {
-  content: '';
+.img-divider-img {
   position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(
-    to bottom,
-    rgba(9, 5, 17, 0.72) 0%,
-    rgba(9, 5, 17, 0.18) 25%,
-    transparent 40%,
-    transparent 60%,
-    rgba(9, 5, 17, 0.18) 75%,
-    rgba(9, 5, 17, 0.72) 100%
-  );
-  pointer-events: none;
-}
-
-/* Subtle violet glow in the vessel lumen */
-.vessel-divider::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 55px;
-  z-index: 0;
-  background: radial-gradient(ellipse 55% 100% at 50% 50%, rgba(164, 139, 239, 0.07) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-/* Outer shell — handles movement only */
-.rbc {
-  position: absolute;
-  z-index: 1;
-  animation: blood-flow linear infinite;
-}
-
-/* Wavy path — staggered delays put each cell at a different phase */
-@keyframes blood-flow {
-  0%   { transform: translateX(110vw)  translateY(0px);  }
-  25%  { transform: translateX(69vw)   translateY(-8px); }
-  50%  { transform: translateX(28vw)   translateY(6px);  }
-  75%  { transform: translateX(-7vw)   translateY(-5px); }
-  100% { transform: translateX(-15vw)  translateY(0px);  }
-}
-
-/* Inner disc — 3D biconcave RBC shading */
-.rbc-disc {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 125%;
+  object-fit: cover;
+  object-position: center center;
   display: block;
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse 30% 30% at 50% 50%, rgba(6, 3, 14, 0.75) 0%, rgba(6, 3, 14, 0.1) 65%, transparent 100%),
-    radial-gradient(ellipse 52% 44% at 38% 22%, rgba(225, 215, 255, 0.72) 0%, transparent 58%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(108, 82, 200, 1) 0%, rgba(164, 139, 239, 1) 50%, rgba(198, 180, 255, 1) 70%, rgba(125, 98, 215, 0.88) 100%);
-  box-shadow:
-    0 5px 18px rgba(6, 3, 14, 0.58),
-    0 2px 5px rgba(6, 3, 14, 0.38),
-    0 0 16px rgba(164, 139, 239, 0.2);
+  will-change: transform;
 }
 
-/* Outer: top position, opacity, timing. Inner: square + rotateX foreshortening = tilted disc */
-.rbc-1  { top: 32px; opacity: 0.88; animation-duration: 12s; animation-delay:  -2s;   }
-.rbc-2  { top: 26px; opacity: 0.60; animation-duration:  8s; animation-delay:  -4s;   }
-.rbc-3  { top: 63px; opacity: 0.38; animation-duration: 14s; animation-delay: -10s;   }
-.rbc-4  { top: 41px; opacity: 0.82; animation-duration: 13s; animation-delay:  -1.5s; }
-.rbc-5  { top: 74px; opacity: 0.30; animation-duration:  9s; animation-delay:  -7s;   }
-.rbc-6  { top: 30px; opacity: 0.68; animation-duration: 15s; animation-delay: -12s;   }
-.rbc-7  { top: 56px; opacity: 0.52; animation-duration: 10s; animation-delay:  -3s;   }
-.rbc-8  { top: 33px; opacity: 0.92; animation-duration: 11s; animation-delay:  -6s;   }
-.rbc-9  { top: 25px; opacity: 0.32; animation-duration: 16s; animation-delay: -14s;   }
-.rbc-10 { top: 46px; opacity: 0.65; animation-duration: 12s; animation-delay:  -8s;   }
-
-.rbc-1  .rbc-disc { width: 46px; height: 46px; transform: perspective(800px) rotateX(58deg) rotateZ(4deg);   }
-.rbc-2  .rbc-disc { width: 36px; height: 36px; transform: perspective(800px) rotateX(63deg) rotateZ(-8deg);  }
-.rbc-3  .rbc-disc { width: 30px; height: 30px; transform: perspective(800px) rotateX(55deg) rotateZ(11deg);  }
-.rbc-4  .rbc-disc { width: 42px; height: 42px; transform: perspective(800px) rotateX(60deg) rotateZ(-4deg);  }
-.rbc-5  .rbc-disc { width: 24px; height: 24px; transform: perspective(800px) rotateX(66deg) rotateZ(6deg);   }
-.rbc-6  .rbc-disc { width: 40px; height: 40px; transform: perspective(800px) rotateX(52deg) rotateZ(-10deg); }
-.rbc-7  .rbc-disc { width: 32px; height: 32px; transform: perspective(800px) rotateX(64deg) rotateZ(2deg);   }
-.rbc-8  .rbc-disc { width: 50px; height: 50px; transform: perspective(800px) rotateX(57deg) rotateZ(-6deg);  }
-.rbc-9  .rbc-disc { width: 26px; height: 26px; transform: perspective(800px) rotateX(68deg) rotateZ(9deg);   }
-.rbc-10 .rbc-disc { width: 38px; height: 38px; transform: perspective(800px) rotateX(61deg) rotateZ(-3deg);  }
+@media (max-width: 768px) {
+  .img-divider {
+    height: 190px;
+  }
+}
 
 /* ================================================================
    Education Section
