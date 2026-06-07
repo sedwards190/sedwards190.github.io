@@ -689,7 +689,7 @@ body.nav-active {
 .contact-body {
   font-size: clamp(0.95rem, 1vw, 1.05rem);
   line-height: 1.7;
-  color: #4a4a4a;
+  color: #1a1a1a;
   max-width: 44ch;
   margin-bottom: var(--sp-10);
 }
