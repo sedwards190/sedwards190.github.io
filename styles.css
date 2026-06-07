@@ -946,27 +946,6 @@ body.nav-active {
   }
 }
 
-/* ----------------------------------------------------------------
-   Reduced motion — global reveal override
-   ---------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .fade-in-up,
-  .fade-in-up-delay,
-  .fade-in,
-  .fade-in-static,
-  .fade-in-delay,
-  .fade-in-delay-2,
-  .fade-in-delay-3 {
-    animation: none;
-    opacity: 1;
-  }
-}
 
 /* ================================================================
    Contact Section

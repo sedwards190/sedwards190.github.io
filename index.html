@@ -336,12 +336,7 @@
         return img.offsetHeight - divider.offsetHeight;
       }
 
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        img.style.transform = 'translateY(' + (-(panRange() / 2)).toFixed(1) + 'px)';
-        return;
-      }
-
-      var ticking = false;
+var ticking = false;
 
       function update() {
         var rect = divider.getBoundingClientRect();
