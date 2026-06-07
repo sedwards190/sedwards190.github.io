@@ -605,6 +605,37 @@ body.nav-active {
 }
 
 /* ----------------------------------------------------------------
+   About — decorative bars
+   ---------------------------------------------------------------- */
+.about-bar {
+  position: absolute;
+  background: linear-gradient(141deg, #37c7bd 0%, #068cf2 100%);
+  mix-blend-mode: difference;
+  filter: invert(100%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.about-bar-1 {
+  height: clamp(20px, 3.2vw, 44px);
+  left: -35%;
+  right: 0;
+  top: 28%;
+}
+
+.about-bar-2 {
+  height: clamp(16px, 2.5vw, 36px);
+  left: -15%;
+  right: 0;
+  top: 64%;
+}
+
+@media (max-width: 899px) {
+  .about-bar-1 { left: 0; top: 22%; }
+  .about-bar-2 { left: 0; top: 60%; }
+}
+
+/* ----------------------------------------------------------------
    Scroll reveal
    ---------------------------------------------------------------- */
 .reveal {
