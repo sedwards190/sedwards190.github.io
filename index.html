@@ -166,9 +166,9 @@
         currentX += (targetX - currentX) * 0.04;
         currentY += (targetY - currentY) * 0.04;
 
-        bg.style.backgroundPosition =
-          (50 + ambBx + currentX).toFixed(2) + '% ' +
-          (50 + ambBy + currentY).toFixed(2) + '%';
+        bg.style.transform =
+          'translate(' + (ambBx + currentX).toFixed(2) + 'px, ' +
+          (ambBy + currentY).toFixed(2) + 'px)';
       }
 
       requestAnimationFrame(tick);
@@ -193,7 +193,7 @@
             /* Fade out over first 80px of scroll; drift up at same rate as hero */
             var opacity = Math.max(1 - y / 80, 0);
             header.style.opacity = opacity.toFixed(3);
-            header.style.transform = 'translateY(' + (-y * 0.1).toFixed(1) + 'px)';
+            header.style.transform = 'translateY(' + (-y).toFixed(1) + 'px)';
             header.style.pointerEvents = opacity === 0 ? 'none' : '';
           }
         }

@@ -129,7 +129,7 @@ body.nav-active {
 /* Monogram logo */
 .header-logo {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   color: var(--color-white);
@@ -160,7 +160,7 @@ body.nav-active {
 
 .header-nav a {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -277,8 +277,9 @@ body.nav-active {
 
 .hero-bg-image {
   position: absolute;
-  inset: 0;
+  inset: -40px;
   background: url('Website%20hero.jpg') 50% 50% / cover no-repeat;
+  will-change: transform;
 }
 
 /* ----------------------------------------------------------------
@@ -653,9 +654,11 @@ body.nav-active {
    Contact Section
    ================================================================ */
 .contact {
-  background: url('Divider.png') top center / 100% 100% no-repeat;
+  background: white url('Divider.png') top center / cover no-repeat;
   padding: clamp(4rem, 10vw, 7rem) 0 clamp(2rem, 5vw, 4rem);
   text-align: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .contact-inner {
