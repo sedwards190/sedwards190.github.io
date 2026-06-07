@@ -64,6 +64,21 @@ body.nav-active {
 }
 
 /* ----------------------------------------------------------------
+   Screen-reader only
+   ---------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----------------------------------------------------------------
    Skip Link
    ---------------------------------------------------------------- */
 .skip-link {
@@ -319,8 +334,9 @@ body.nav-active {
   letter-spacing: 0.06em;
   color: var(--color-white-90);
   max-width: 52ch;
-  margin-bottom: var(--sp-10);
+  margin: 0 auto var(--sp-10);
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.30);
+  text-align: center;
 }
 
 /* ----------------------------------------------------------------
@@ -416,9 +432,10 @@ body.nav-active {
   width: 100%;
 }
 
-.hero-name     { animation: heroReveal 1.1s var(--ease-out) 0.08s both; }
-.hero-subtitle { animation: heroReveal 1.1s var(--ease-out) 0.22s both; }
-.hero-actions  { animation: heroReveal 1.1s var(--ease-out) 0.38s both; }
+.hero-line-1   { animation: heroReveal 1.1s var(--ease-out) 0.08s both; margin-bottom: 0; }
+.hero-line-2   { animation: heroReveal 1.1s var(--ease-out) 0.20s both; }
+.hero-subtitle { animation: heroReveal 1.1s var(--ease-out) 0.36s both; }
+.hero-actions  { animation: heroReveal 1.1s var(--ease-out) 0.50s both; }
 
 
 /* ----------------------------------------------------------------
