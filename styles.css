@@ -4,10 +4,21 @@
    ================================================================ */
 
 /* ----------------------------------------------------------------
+   Fonts
+   ---------------------------------------------------------------- */
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('ApfelGrotezk-Regular.woff') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ----------------------------------------------------------------
    Design Tokens
    ---------------------------------------------------------------- */
 :root {
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans: 'ApfelGrotezk', sans-serif;
 
   --color-white:    #ffffff;
   --color-white-90: rgba(255, 255, 255, 0.90);
@@ -305,7 +316,7 @@ body.nav-active {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: calc(var(--sp-16) + 2rem) var(--sp-8) var(--sp-12);
+  padding: 5.5rem var(--sp-6) 3rem;
 }
 
 /* ----------------------------------------------------------------
@@ -313,12 +324,12 @@ body.nav-active {
    ---------------------------------------------------------------- */
 .hero-name {
   font-family: var(--font-sans);
-  font-size: clamp(3rem, 10vw, 9rem);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-size: clamp(3.5rem, 11vw, 10rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
   color: var(--color-white);
-  margin-bottom: 0.55em;
+  margin-bottom: clamp(0.8rem, 1.8vw, 1.4rem);
 }
 
 /* ----------------------------------------------------------------
@@ -326,11 +337,11 @@ body.nav-active {
    ---------------------------------------------------------------- */
 .hero-subtitle {
   font-family: var(--font-sans);
-  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--color-white-90);
-  max-width: 52ch;
+  max-width: 48ch;
   margin: 0 auto var(--sp-10);
   text-align: center;
 }
