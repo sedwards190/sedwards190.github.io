@@ -282,6 +282,12 @@ body.nav-active {
   will-change: transform;
 }
 
+@media (max-width: 768px) {
+  .hero-bg-image {
+    background-image: url('hero-mobile.jpg');
+  }
+}
+
 /* ----------------------------------------------------------------
    Hero — Overlay
    Radial gradient: very subtle dark centre for text contrast,
