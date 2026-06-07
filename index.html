@@ -182,14 +182,24 @@
       requestAnimationFrame(tick);
     }());
 
-    /* Header hide on scroll */
+    /* Header hide + hero parallax (data-speed="1.1" equivalent) */
     (function () {
       var header = document.querySelector('.site-header');
-      if (!header) return;
+      var heroContent = document.querySelector('.hero-content');
       var ticking = false;
 
       function update() {
-        header.classList.toggle('header-hidden', window.scrollY > 60);
+        var y = window.scrollY;
+
+        if (header) {
+          header.classList.toggle('header-hidden', y > 60);
+        }
+
+        if (heroContent) {
+          /* Mirrors Enveda's data-speed="1.1": element drifts up at 10% of scroll */
+          heroContent.style.transform = 'translateY(' + (-y * 0.1).toFixed(1) + 'px)';
+        }
+
         ticking = false;
       }
 

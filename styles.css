@@ -433,10 +433,10 @@ body.nav-active {
   width: 100%;
 }
 
-.hero-line-1   { animation: heroFadeUp 1s var(--ease-out) 0.1s  both; margin-bottom: 0; }
-.hero-line-2   { animation: heroFadeUp 1s var(--ease-out) 0.22s both; }
-.hero-subtitle { animation: heroFadeUp 1s var(--ease-out) 0.38s both; }
-.hero-actions  { animation: heroFadeUp 1s var(--ease-out) 0.52s both; }
+.hero-line-1   { animation: heroFadeUp 1s var(--ease-out) 0.05s both; margin-bottom: 0; }
+.hero-line-2   { animation: heroFadeUp 1s var(--ease-out) 0.15s both; }
+.hero-subtitle { animation: heroFadeUp 1s var(--ease-out) 0.28s both; }
+.hero-actions  { animation: heroFadeUp 1s var(--ease-out) 0.5s  both; }
 
 
 /* ----------------------------------------------------------------
