@@ -84,7 +84,7 @@
     <div id="experience" aria-hidden="true"></div>
     <div id="projects"   aria-hidden="true"></div>
 
-    <section class="contact reveal" id="contact" aria-labelledby="contact-heading">
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
       <div class="contact-inner">
         <h2 class="contact-heading" id="contact-heading">Contact</h2>
         <p class="contact-body">Interested in collaborating or just want to say hello? I'd love to hear from you.</p>
@@ -170,6 +170,41 @@
       }
 
       requestAnimationFrame(tick);
+    }());
+
+    /* Header fade-out + hero parallax on scroll */
+    (function () {
+      var header = document.querySelector('.site-header');
+      var heroContent = document.querySelector('.hero-content');
+      var ticking = false;
+
+      function update() {
+        var y = window.scrollY;
+
+        if (header) {
+          if (y > 60) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
+          }
+        }
+
+        if (heroContent) {
+          var vh = window.innerHeight;
+          var progress = Math.min(y / (vh * 0.65), 1);
+          heroContent.style.transform = 'translateY(' + (progress * -60).toFixed(1) + 'px)';
+          heroContent.style.opacity = Math.max(1 - progress * 1.6, 0).toFixed(3);
+        }
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
     }());
 
     /* Scroll reveal — IntersectionObserver */

@@ -98,6 +98,13 @@ body.nav-active {
   align-items: center;
   justify-content: space-between;
   padding: var(--sp-5) var(--sp-8);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.site-header.header-hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
 }
 
 /* Monogram logo */
