@@ -660,7 +660,7 @@ body.nav-active {
    Contact Section
    ================================================================ */
 .contact {
-  background: white url('Divider.png') top center / cover no-repeat;
+  background: white url('DividerD.jpg') top center / cover no-repeat;
   padding: clamp(4rem, 10vw, 7rem) 0 clamp(2rem, 5vw, 4rem);
   text-align: center;
   width: 100%;
