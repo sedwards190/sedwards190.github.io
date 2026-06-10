@@ -190,13 +190,8 @@ body.nav-active {
 }
 
 .header-nav a:hover::after,
-.header-nav a:focus-visible::after,
-.header-nav a.active::after {
+.header-nav a:focus-visible::after {
   transform: scaleX(1);
-}
-
-.header-nav a.active {
-  color: var(--color-white);
 }
 
 .header-nav a:focus-visible {

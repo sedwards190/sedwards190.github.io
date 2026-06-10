@@ -381,33 +381,6 @@ var ticking = false;
 
       reveals.forEach(function (el) { observer.observe(el); });
     }());
-
-    /* Active nav link — reflects the section currently in view */
-    (function () {
-      var linkFor = {
-        about:     document.querySelector('.header-nav a[href="/about"]'),
-        education: document.querySelector('.header-nav a[href="/education"]'),
-        contact:   document.querySelector('.header-nav a[href="/contact"]')
-      };
-      var sections = ['about', 'education', 'contact']
-        .map(function (id) { return document.getElementById(id); })
-        .filter(Boolean);
-      if (!sections.length) return;
-
-      function setActive(id) {
-        Object.keys(linkFor).forEach(function (key) {
-          if (linkFor[key]) linkFor[key].classList.toggle('active', key === id);
-        });
-      }
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      }, { rootMargin: '-45% 0px -55% 0px' });
-
-      sections.forEach(function (s) { observer.observe(s); });
-    }());
   </script>
 
 </body>
