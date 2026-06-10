@@ -579,6 +579,8 @@ body.nav-active {
 /* Image column */
 .about-image-wrap {
   position: relative;
+  overflow: hidden;
+  border-radius: 2px;
 }
 
 .about-image {
@@ -587,6 +589,19 @@ body.nav-active {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 2px;
+  /* Wipes up into view when scrolled to, then a slow zoom on hover. */
+  clip-path: inset(100% 0 0 0);
+  transition:
+    clip-path 0.9s var(--ease-out),
+    transform 0.7s var(--ease-out);
+}
+
+.about-image-wrap.revealed .about-image {
+  clip-path: inset(0 0 0 0);
+}
+
+.about-image-wrap:hover .about-image {
+  transform: scale(1.05);
 }
 
 .about-image-placeholder {
