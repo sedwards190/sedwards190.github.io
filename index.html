@@ -297,7 +297,7 @@
       requestAnimationFrame(tick);
     }());
 
-    /* Header frosted-bar on scroll + hero parallax */
+    /* Header scroll-fade + hero parallax */
     (function () {
       var header = document.querySelector('.site-header');
       var heroContent = document.querySelector('.hero-content');
@@ -306,13 +306,21 @@
       function update() {
         var y = window.scrollY;
 
-        /* Transparent over the hero; frosted dark bar once scrolled,
-           so the nav stays visible and readable over light sections. */
         if (header) {
-          header.classList.toggle('scrolled', y > 40);
+          if (y <= 0) {
+            /* At rest — let the CSS fade-in-static animation run unobstructed */
+            header.style.opacity = '';
+            header.style.transform = '';
+            header.style.pointerEvents = '';
+          } else {
+            /* Fade out over first 80px of scroll; drift up at same rate as hero */
+            var opacity = Math.max(1 - y / 80, 0);
+            header.style.opacity = opacity.toFixed(3);
+            header.style.transform = 'translateY(' + (-y).toFixed(1) + 'px)';
+            header.style.pointerEvents = opacity === 0 ? 'none' : '';
+          }
         }
 
-        /* Subtle hero parallax. */
         if (heroContent) {
           heroContent.style.transform = 'translateY(' + (-y * 0.1).toFixed(1) + 'px)';
         }
@@ -326,8 +334,6 @@
           ticking = true;
         }
       }, { passive: true });
-
-      update();
     }());
 
 /* Image divider — vertical scroll pan */

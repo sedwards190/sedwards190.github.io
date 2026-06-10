@@ -124,21 +124,6 @@ body.nav-active {
   align-items: center;
   justify-content: space-between;
   padding: var(--sp-5) var(--sp-8);
-  transition:
-    background var(--dur) var(--ease-out),
-    padding var(--dur) var(--ease-out),
-    box-shadow var(--dur) var(--ease-out);
-}
-
-/* Frosted bar once scrolled off the hero — keeps nav visible and
-   readable over the light content sections below. */
-.site-header.scrolled {
-  padding-top: var(--sp-4);
-  padding-bottom: var(--sp-4);
-  background: rgba(9, 5, 17, 0.72);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 /* Monogram logo */
